@@ -1,4 +1,12 @@
 $(document).ready(function(){
+    // Show welcome modal on page load
+    $('.welcome-modal').show();
+    
+    // Handle enter button click
+    $('.enter-btn').click(function(){
+        $('.welcome-modal').fadeOut();
+    });
+    
     $(window).scroll(function(){
         // sticky navbar on scroll script
         if(this.scrollY > 20){
@@ -35,39 +43,23 @@ $(document).ready(function(){
 
     // typing text animation script
     var typed = new Typed(".typing", {
-        strings: [ "Developer", "Designer", "Freelancer"],
+        strings: [ "Security Analyst", "Developer", "Cybersecurity Specialist"],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
     });
 
     var typed = new Typed(".typing-2", {
-        strings: [ "Developer", "Designer", "Freelancer"],
+        strings: [ "Security Analyst", "Developer", "Cybersecurity Specialist"],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
     });
 
-    // owl carousel script
-    $('.carousel').owlCarousel({
-        margin: 20,
-        loop: true,
-        autoplay: true,
-        autoplayTimeOut: 2000,
-        autoplayHoverPause: true,
-        responsive: {
-            0:{
-                items: 1,
-                nav: false
-            },
-            600:{
-                items: 2,
-                nav: false
-            },
-            1000:{
-                items: 3,
-                nav: false
-            }
-        }
+    // Contact form submission
+    $('#contact-form').submit(function(e){
+        e.preventDefault();
+        alert('Thank you for your message! I will get back to you soon.');
+        this.reset();
     });
 });
