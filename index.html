@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayomide Adewale - Cybersecurity Specialist</title>
+    <title>Ayomide Adewale - Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="security-mode">
     <!-- Welcome Modal -->
     <div class="welcome-modal" id="welcomeModal">
         <div class="terminal-container">
@@ -27,11 +27,26 @@
         </div>
     </div>
 
+    <!-- Mode Toggle -->
+    <div class="mode-toggle" id="modeToggle">
+        <div class="toggle-container">
+            <button class="toggle-btn active" data-mode="security">
+                <i class="fas fa-shield-halved"></i>
+                <span>Security</span>
+            </button>
+            <button class="toggle-btn" data-mode="developer">
+                <i class="fas fa-code"></i>
+                <span>Developer</span>
+            </button>
+            <div class="toggle-slider"></div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">
-                <i class="fas fa-shield-halved"></i>
+                <i class="fas fa-shield-halved" id="logoIcon"></i>
                 <span>Ayomide<span class="logo-dot">.</span></span>
             </div>
             <ul class="nav-menu" id="navMenu">
@@ -52,12 +67,12 @@
     <section class="hero" id="home">
         <div class="grid-background"></div>
         <div class="hero-content">
-            <div class="hero-badge">Cybersecurity Specialist</div>
-            <h1>
+            <div class="hero-badge" id="heroBadge">Cybersecurity Specialist</div>
+            <h1 id="heroTitle">
                 Securing Digital<br>
-                <span class="gradient-text">Infrastructure</span>
+                <span class="gradient-text" id="heroGradient">Infrastructure</span>
             </h1>
-            <p>
+            <p id="heroDescription">
                 Cybersecurity Analyst & Backend Developer specializing in threat detection, 
                 secure application development, and network security architecture.
             </p>
@@ -85,10 +100,10 @@
             </div>
             <div class="about-text">
                 <h2>About <span class="gradient-text">Me</span></h2>
-                <p>
-                    I am a <strong>Cybersecurity Analyst</strong> and <strong>Backend Developer</strong> with expertise in Python, Django Rest Framework, and security protocols. At 20 years old, I bring a unique combination of technical skills, analytical thinking, and a passion for securing digital environments.
+                <p id="aboutP1">
+                    I am a <strong>Cybersecurity Analyst</strong> and <strong>Backend Developer</strong> with expertise in Python, Django Rest Framework, and security protocols. At 21 years old, I bring a unique combination of technical skills, analytical thinking, and a passion for securing digital environments.
                 </p>
-                <p>
+                <p id="aboutP2">
                     My journey in technology began with backend development, which gave me a strong foundation in building secure applications. This naturally evolved into a dedicated focus on cybersecurity, where I now specialize in threat detection, vulnerability assessment, and security architecture.
                 </p>
                 <p>
@@ -116,29 +131,53 @@
     <section class="services" id="services">
         <div class="section-header">
             <h2>My <span class="gradient-text">Services</span></h2>
-            <p>Specialized cybersecurity services combining threat analysis, secure development, and network protection</p>
+            <p id="servicesSubtitle">Specialized cybersecurity services combining threat analysis, secure development, and network protection</p>
         </div>
-        <div class="services-grid">
-            <div class="service-card">
+        <div class="services-grid" id="servicesGrid">
+            <!-- Security Mode Services -->
+            <div class="service-card security-service">
                 <div class="service-icon">
                     <i class="fas fa-search"></i>
                 </div>
                 <h3>Security Assessment</h3>
                 <p>Comprehensive packet analysis, email analysis, file analysis, OSINT, vulnerability assessments and threat detection to identify and mitigate risks in your systems.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card security-service">
                 <div class="service-icon">
                     <i class="fas fa-lock"></i>
                 </div>
                 <h3>Secure Development</h3>
                 <p>Building robust, secure applications with security best practices integrated throughout the development lifecycle.</p>
             </div>
-            <div class="service-card">
+            <div class="service-card security-service">
                 <div class="service-icon">
                     <i class="fas fa-network-wired"></i>
                 </div>
                 <h3>Network Security</h3>
                 <p>Designing and implementing secure network architectures, monitoring systems, and incident response protocols.</p>
+            </div>
+
+            <!-- Developer Mode Services (Hidden by default) -->
+            <div class="service-card developer-service" style="display: none;">
+                <div class="service-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <h3>Full-Stack Development</h3>
+                <p>Building scalable web applications and APIs using React, Django, and modern frameworks with focus on performance and user experience.</p>
+            </div>
+            <div class="service-card developer-service" style="display: none;">
+                <div class="service-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <h3>API Architecture</h3>
+                <p>Designing and implementing RESTful APIs with comprehensive documentation, authentication, and rate limiting.</p>
+            </div>
+            <div class="service-card developer-service" style="display: none;">
+                <div class="service-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Secure Applications</h3>
+                <p>Integrating security best practices into the development lifecycle, from architecture to deployment and maintenance.</p>
             </div>
         </div>
     </section>
@@ -218,13 +257,13 @@
                     </div>
                 </div>
                 <div class="tool-category">
-                    <h3><i class="fas fa-layer-group"></i> Frameworks</h3>
+                    <h3><i class="fas fa-layer-group"></i> Frameworks & Tools</h3>
                     <div class="tool-tags">
-                        <span class="tool-tag">NIST</span>
-                        <span class="tool-tag">ISO 27001</span>
-                        <span class="tool-tag">OWASP</span>
                         <span class="tool-tag">Django</span>
+                        <span class="tool-tag">React</span>
                         <span class="tool-tag">REST API</span>
+                        <span class="tool-tag">NIST</span>
+                        <span class="tool-tag">OWASP</span>
                     </div>
                 </div>
             </div>
@@ -237,8 +276,55 @@
             <h2>Featured <span class="gradient-text">Projects</span></h2>
             <p>Real-world security implementations and development projects</p>
         </div>
-        <div class="projects-grid">
-            <div class="project-card">
+        <div class="projects-grid" id="projectsGrid">
+            <!-- Projects will be dynamically reordered by JavaScript -->
+            <div class="project-card featured" data-category="development" data-order-security="1" data-order-developer="1">
+                <div class="project-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Socratic AI Learning Platform</h3>
+                <p>Full-stack AI application that helps users summarize PDFs and documents, generate audio summaries, and create interactive quizzes for enhanced learning retention.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">AI/ML</span>
+                    <span class="tech-tag">Full-Stack</span>
+                    <span class="tech-tag">PDF Processing</span>
+                </div>
+                <a href="https://socratic-frontend-ashy.vercel.app/" target="_blank" class="project-link">
+                    View Live App <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+            <div class="project-card featured" data-category="security" data-order-security="2" data-order-developer="4">
+                <div class="project-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3>PCAP File Analyzer</h3>
+                <p>Advanced network traffic analysis tool that generates quick, comprehensive analysis on PCAP files for security auditing and threat detection.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Network Analysis</span>
+                    <span class="tech-tag">Security</span>
+                </div>
+                <a href="https://github.com/ayorex11/pcap-analyzer" target="_blank" class="project-link">
+                    View on GitHub <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+            <div class="project-card" data-category="development" data-order-security="5" data-order-developer="2">
+                <div class="project-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>EkoPages API</h3>
+                <p>Secure, scalable API architecture for educational platform focused on SDGs with comprehensive security controls and authentication.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Django</span>
+                    <span class="tech-tag">REST API</span>
+                    <span class="tech-tag">Security</span>
+                </div>
+                <a href="https://ekopages.com/" target="_blank" class="project-link">
+                    View Project <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+            <div class="project-card" data-category="security" data-order-security="3" data-order-developer="5">
                 <div class="project-icon">
                     <i class="fas fa-envelope"></i>
                 </div>
@@ -253,7 +339,22 @@
                     View Project <i class="fas fa-external-link-alt"></i>
                 </a>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-category="development" data-order-security="6" data-order-developer="3">
+                <div class="project-icon">
+                    <i class="fas fa-cloud"></i>
+                </div>
+                <h3>Weather API</h3>
+                <p>Django REST framework implementation with proper authentication, rate limiting, and comprehensive API documentation.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Django</span>
+                    <span class="tech-tag">REST API</span>
+                    <span class="tech-tag">Documentation</span>
+                </div>
+                <a href="https://github.com/ayorex11/weatherAPP" target="_blank" class="project-link">
+                    View Project <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+            <div class="project-card" data-category="security" data-order-security="4" data-order-developer="6">
                 <div class="project-icon">
                     <i class="fas fa-shield-virus"></i>
                 </div>
@@ -266,66 +367,6 @@
                 </div>
                 <a href="https://github.com/ayorex11/malware-scanner" target="_blank" class="project-link">
                     View Project <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-code"></i>
-                </div>
-                <h3>EkoPages API</h3>
-                <p>Secure, scalable API architecture for educational platform focused on SDGs with comprehensive security controls.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Django</span>
-                    <span class="tech-tag">REST</span>
-                    <span class="tech-tag">Security</span>
-                </div>
-                <a href="https://ekopages.com/" target="_blank" class="project-link">
-                    View Project <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fas fa-cloud"></i>
-                </div>
-                <h3>Weather API</h3>
-                <p>Django REST framework implementation with proper authentication, rate limiting, and comprehensive documentation.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Django</span>
-                    <span class="tech-tag">API</span>
-                    <span class="tech-tag">Documentation</span>
-                </div>
-                <a href="https://github.com/ayorex11/weatherAPP" target="_blank" class="project-link">
-                    View Project <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fab fa-youtube"></i>
-                </div>
-                <h3>Security Tutorials</h3>
-                <p>Video tutorials demonstrating security tools, techniques, and practical cybersecurity implementations alongside API development.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Education</span>
-                    <span class="tech-tag">Security</span>
-                    <span class="tech-tag">Development</span>
-                </div>
-                <a href="https://www.youtube.com/@Adewale-Ayomide" target="_blank" class="project-link">
-                    Watch Videos <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
-            <div class="project-card">
-                <div class="project-icon">
-                    <i class="fab fa-medium"></i>
-                </div>
-                <h3>Security Articles</h3>
-                <p>Collection of technical articles on cybersecurity labs solved and the detailed process involved in penetration testing.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Writing</span>
-                    <span class="tech-tag">Research</span>
-                    <span class="tech-tag">Analysis</span>
-                </div>
-                <a href="https://medium.com/@adewalemaxwell11" target="_blank" class="project-link">
-                    Read Articles <i class="fas fa-external-link-alt"></i>
                 </a>
             </div>
         </div>
