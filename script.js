@@ -14,7 +14,7 @@ const content = {
         title: 'Building Modern',
         titleGradient: 'Web Solutions',
         description: 'Full-Stack Developer & Security-Minded Engineer specializing in scalable applications, API development, and secure software architecture.',
-        aboutP1: 'I am a <strong>Full-Stack Developer</strong> and <strong>Security-Minded Engineer</strong> with expertise in React, Django, and modern web technologies. At 21 years old, I combine development excellence with security awareness to build robust, user-friendly applications.',
+        aboutP1: 'I am a <strong>Full-Stack Developer</strong> and <strong>Security-Minded Engineer</strong> with expertise in  Vue, Django, and modern web technologies. At 21 years old, I combine development excellence with security awareness to build robust, user-friendly applications.',
         aboutP2: 'My journey started with a passion for creating web applications that solve real problems. Along the way, I developed a deep understanding of security principles, allowing me to build applications that are not only functional and beautiful, but also secure and resilient.',
         servicesSubtitle: 'Professional web development services from concept to deployment with security built-in',
         logoIcon: 'fa-code'
