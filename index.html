@@ -1,474 +1,778 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ayomide Adewale - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="security-mode">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="security-mode">
     <!-- Welcome Modal -->
     <div class="welcome-modal" id="welcomeModal">
-        <div class="terminal-container">
-            <div class="terminal-header">
-                <i class="fas fa-terminal terminal-icon"></i>
-                <span class="terminal-title">ayomide@portfolio:~$</span>
-            </div>
-            <div class="terminal-content">
-                <div class="terminal-line primary">
-                    > <span id="terminalText"></span><span class="cursor"></span>
-                </div>
-                <div class="terminal-line">> Loading security protocols...</div>
-                <div class="terminal-line">> Verifying credentials...</div>
-                <div class="terminal-line primary">> Access granted. Welcome.</div>
-            </div>
-            <button class="enter-btn" id="enterBtn">ENTER PORTFOLIO</button>
+      <div class="terminal-container">
+        <div class="terminal-header">
+          <i class="fas fa-terminal terminal-icon"></i>
+          <span class="terminal-title">ayomide@portfolio:~$</span>
         </div>
+        <div class="terminal-content">
+          <div class="terminal-line primary">
+            > <span id="terminalText"></span><span class="cursor"></span>
+          </div>
+          <div class="terminal-line">> Loading security protocols...</div>
+          <div class="terminal-line">> Verifying credentials...</div>
+          <div class="terminal-line primary">> Access granted. Welcome.</div>
+        </div>
+        <button class="enter-btn" id="enterBtn">ENTER PORTFOLIO</button>
+      </div>
     </div>
 
     <!-- Mode Toggle -->
     <div class="mode-toggle" id="modeToggle">
-        <div class="toggle-container">
-            <button class="toggle-btn active" data-mode="security">
-                <i class="fas fa-shield-halved"></i>
-                <span>Security</span>
-            </button>
-            <button class="toggle-btn" data-mode="developer">
-                <i class="fas fa-code"></i>
-                <span>Developer</span>
-            </button>
-            <div class="toggle-slider"></div>
-        </div>
+      <div class="toggle-container">
+        <button class="toggle-btn active" data-mode="security">
+          <i class="fas fa-shield-halved"></i>
+          <span>Security</span>
+        </button>
+        <button class="toggle-btn" data-mode="developer">
+          <i class="fas fa-code"></i>
+          <span>Developer</span>
+        </button>
+        <div class="toggle-slider"></div>
+      </div>
     </div>
 
     <!-- Navigation -->
     <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <i class="fas fa-shield-halved" id="logoIcon"></i>
-                <span>Ayomide<span class="logo-dot">.</span></span>
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <button class="mobile-toggle" id="mobileToggle">
-                <i class="fas fa-bars"></i>
-            </button>
+      <div class="nav-container">
+        <div class="logo">
+          <i class="fas fa-shield-halved" id="logoIcon"></i>
+          <span>Ayomide<span class="logo-dot">.</span></span>
         </div>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-toggle" id="mobileToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <canvas id="particleCanvas" class="particle-canvas"></canvas>
         <div class="grid-background"></div>
         <div class="hero-content">
-            <div class="hero-badge" id="heroBadge">Cybersecurity Specialist</div>
-            <h1 id="heroTitle">
-                Securing Digital<br>
-                <span class="gradient-text" id="heroGradient">Infrastructure</span>
-            </h1>
-            <p id="heroDescription">
-                Cybersecurity Analyst & Backend Developer specializing in threat detection, 
-                secure application development, and network security architecture.
-            </p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                <a href="https://drive.google.com/file/d/19JP0ymXbU2e79DD-MSMtITNCUIfF80nl/view?usp=sharing" target="_blank" class="btn btn-secondary">Download CV</a>
-            </div>
+        <div class="hero-badge" id="heroBadge">Cybersecurity Specialist</div>
+        <h1 id="heroTitle">
+          Securing Digital<br />
+          <span class="gradient-text" id="heroGradient">Infrastructure</span>
+        </h1>
+        <p id="heroDescription">
+          Cybersecurity Analyst & Backend Developer specializing in threat
+          detection, secure application development, and network security
+          architecture.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary">Get In Touch</a>
+          <a
+            href="https://drive.google.com/file/d/19JP0ymXbU2e79DD-MSMtITNCUIfF80nl/view?usp=sharing"
+            target="_blank"
+            class="btn btn-secondary"
+            >Download CV</a
+          >
         </div>
-        <a href="#about" class="scroll-indicator">
-            <i class="fas fa-chevron-down"></i>
-        </a>
+      </div>
+      <a href="#about" class="scroll-indicator">
+        <i class="fas fa-chevron-down"></i>
+      </a>
     </section>
 
     <!-- About Section -->
     <section class="about" id="about">
-        <div class="about-content">
-            <div class="about-image">
-                <div class="image-wrapper">
-                    <img src="images/ayo.jpeg" alt="Ayomide Adewale">
-                </div>
-                <div class="stats-badge">
-                    <div class="stat-number">4</div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-            </div>
-            <div class="about-text">
-                <h2>About <span class="gradient-text">Me</span></h2>
-                <p id="aboutP1">
-                    I am a <strong>Cybersecurity Analyst</strong> and <strong>Backend Developer</strong> with expertise in Python, Django Rest Framework, and security protocols. At 21 years old, I bring a unique combination of technical skills, analytical thinking, and a passion for securing digital environments.
-                </p>
-                <p id="aboutP2">
-                    My journey in technology began with backend development, which gave me a strong foundation in building secure applications. This naturally evolved into a dedicated focus on cybersecurity, where I now specialize in threat detection, vulnerability assessment, and security architecture.
-                </p>
-                <p>
-                    Currently studying Cyber Security at <strong>Caleb University</strong> while working at <strong>EkoPages</strong>, where I collaborate with talented professionals to develop secure web solutions.
-                </p>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/ayomide-adewale-b0899922b/" target="_blank" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://github.com/ayorex11" target="_blank" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.youtube.com/@Adewale-Ayomide" target="_blank" aria-label="YouTube">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="https://medium.com/@adewalemaxwell11" target="_blank" aria-label="Medium">
-                        <i class="fab fa-medium"></i>
-                    </a>
-                </div>
-            </div>
+      <div class="about-content">
+        <div class="about-image">
+          <div class="image-wrapper">
+            <img src="images/ayo.jpeg" alt="Ayomide Adewale" />
+          </div>
+          <div class="stats-badge">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
         </div>
+        <div class="about-text">
+          <h2>About <span class="gradient-text">Me</span></h2>
+          <p id="aboutP1">
+            I am a <strong>Cybersecurity Analyst</strong> and
+            <strong>Backend Developer</strong> with expertise in Python, Django
+            Rest Framework, and security protocols. At 21 years old, I bring a
+            unique combination of technical skills, analytical thinking, and a
+            passion for securing digital environments.
+          </p>
+          <p id="aboutP2">
+            My journey in technology began with backend development, which gave
+            me a strong foundation in building secure applications. This
+            naturally evolved into a dedicated focus on cybersecurity, where I
+            now specialize in threat detection, vulnerability assessment, and
+            security architecture.
+          </p>
+          <p>
+            Currently studying Cyber Security at
+            <strong>Caleb University</strong> while working at
+            <strong>EkoPages</strong>, where I collaborate with talented
+            professionals to develop secure web solutions.
+          </p>
+          <div class="social-links">
+            <a
+              href="https://www.linkedin.com/in/ayomide-adewale-b0899922b/"
+              target="_blank"
+              aria-label="LinkedIn"
+            >
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a
+              href="https://github.com/ayorex11"
+              target="_blank"
+              aria-label="GitHub"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+            <a
+              href="https://www.youtube.com/@Adewale-Ayomide"
+              target="_blank"
+              aria-label="YouTube"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a
+              href="https://medium.com/@adewalemaxwell11"
+              target="_blank"
+              aria-label="Medium"
+            >
+              <i class="fab fa-medium"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Services Section -->
     <section class="services" id="services">
-        <div class="section-header">
-            <h2>My <span class="gradient-text">Services</span></h2>
-            <p id="servicesSubtitle">Specialized cybersecurity services combining threat analysis, secure development, and network protection</p>
+      <div class="section-header">
+        <h2>My <span class="gradient-text">Services</span></h2>
+        <p id="servicesSubtitle">
+          Specialized cybersecurity services combining threat analysis, secure
+          development, and network protection
+        </p>
+      </div>
+      <div class="services-grid" id="servicesGrid">
+        <!-- Security Mode Services -->
+        <div class="service-card security-service">
+          <div class="service-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3>Security Assessment</h3>
+          <p>
+            Comprehensive packet analysis, email analysis, file analysis, OSINT,
+            vulnerability assessments and threat detection to identify and
+            mitigate risks in your systems.
+          </p>
         </div>
-        <div class="services-grid" id="servicesGrid">
-            <!-- Security Mode Services -->
-            <div class="service-card security-service">
-                <div class="service-icon">
-                    <i class="fas fa-search"></i>
-                </div>
-                <h3>Security Assessment</h3>
-                <p>Comprehensive packet analysis, email analysis, file analysis, OSINT, vulnerability assessments and threat detection to identify and mitigate risks in your systems.</p>
-            </div>
-            <div class="service-card security-service">
-                <div class="service-icon">
-                    <i class="fas fa-lock"></i>
-                </div>
-                <h3>Secure Development</h3>
-                <p>Building robust, secure applications with security best practices integrated throughout the development lifecycle.</p>
-            </div>
-            <div class="service-card security-service">
-                <div class="service-icon">
-                    <i class="fas fa-network-wired"></i>
-                </div>
-                <h3>Network Security</h3>
-                <p>Designing and implementing secure network architectures, monitoring systems, and incident response protocols.</p>
-            </div>
+        <div class="service-card security-service">
+          <div class="service-icon">
+            <i class="fas fa-lock"></i>
+          </div>
+          <h3>Secure Development</h3>
+          <p>
+            Building robust, secure applications with security best practices
+            integrated throughout the development lifecycle.
+          </p>
+        </div>
+        <div class="service-card security-service">
+          <div class="service-icon">
+            <i class="fas fa-network-wired"></i>
+          </div>
+          <h3>Network Security</h3>
+          <p>
+            Designing and implementing secure network architectures, monitoring
+            systems, and incident response protocols.
+          </p>
+        </div>
 
-            <!-- Developer Mode Services (Hidden by default) -->
-            <div class="service-card developer-service" style="display: none;">
-                <div class="service-icon">
-                    <i class="fas fa-laptop-code"></i>
-                </div>
-                <h3>Full-Stack Development</h3>
-                <p>Building scalable web applications and APIs using Vue, Django, and modern frameworks with focus on performance and user experience.</p>
-            </div>
-            <div class="service-card developer-service" style="display: none;">
-                <div class="service-icon">
-                    <i class="fas fa-project-diagram"></i>
-                </div>
-                <h3>API Architecture</h3>
-                <p>Designing and implementing RESTful APIs with comprehensive documentation, authentication, and rate limiting.</p>
-            </div>
-            <div class="service-card developer-service" style="display: none;">
-                <div class="service-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3>Secure Applications</h3>
-                <p>Integrating security best practices into the development lifecycle, from architecture to deployment and maintenance.</p>
-            </div>
+        <!-- Developer Mode Services (Hidden by default) -->
+        <div class="service-card developer-service" style="display: none">
+          <div class="service-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h3>Full-Stack Development</h3>
+          <p>
+            Building scalable web applications and APIs using Vue, Django, and
+            modern frameworks with focus on performance and user experience.
+          </p>
         </div>
+        <div class="service-card developer-service" style="display: none">
+          <div class="service-icon">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <h3>API Architecture</h3>
+          <p>
+            Designing and implementing RESTful APIs with comprehensive
+            documentation, authentication, and rate limiting.
+          </p>
+        </div>
+        <div class="service-card developer-service" style="display: none">
+          <div class="service-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Secure Applications</h3>
+          <p>
+            Integrating security best practices into the development lifecycle,
+            from architecture to deployment and maintenance.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- Skills Section -->
     <section class="skills" id="skills">
-        <div class="section-header">
-            <h2>Technical <span class="gradient-text">Skills</span></h2>
-            <p>A unique combination of development skills and security knowledge</p>
-        </div>
-        <div class="skills-content">
-            <div class="skills-bars">
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Python & Django</span>
-                        <span class="skill-percentage">90%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="90"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Security Assessment</span>
-                        <span class="skill-percentage">85%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="85"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Network Security</span>
-                        <span class="skill-percentage">75%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="75"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Threat Detection</span>
-                        <span class="skill-percentage">80%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="80"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">API Development</span>
-                        <span class="skill-percentage">88%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="88"></div>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-header">
-                        <span class="skill-name">Incident Response</span>
-                        <span class="skill-percentage">70%</span>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-progress" data-progress="70"></div>
-                    </div>
-                </div>
+      <div class="section-header">
+        <h2>Technical <span class="gradient-text">Skills</span></h2>
+        <p>A unique combination of development skills and security knowledge</p>
+      </div>
+      <div class="skills-content">
+        <div class="skills-bars">
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">Python & Django</span>
+              <span class="skill-percentage">90%</span>
             </div>
-            <div class="skills-tools">
-                <div class="tool-category">
-                    <h3><i class="fas fa-shield-alt"></i> Security Tools</h3>
-                    <div class="tool-tags">
-                        <span class="tool-tag">Wireshark</span>
-                        <span class="tool-tag">Metasploit</span>
-                        <span class="tool-tag">Nmap</span>
-                        <span class="tool-tag">Burp Suite</span>
-                        <span class="tool-tag">Sherlock</span>
-                    </div>
-                </div>
-                <div class="tool-category">
-                    <h3><i class="fas fa-layer-group"></i> Frameworks & Tools</h3>
-                    <div class="tool-tags">
-                        <span class="tool-tag">Django</span>
-                        <span class="tool-tag">Vue</span>
-                        <span class="tool-tag">REST API</span>
-                        <span class="tool-tag">NIST</span>
-                        <span class="tool-tag">OWASP</span>
-                    </div>
-                </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="90"></div>
             </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">Security Assessment</span>
+              <span class="skill-percentage">85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="85"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">Network Security</span>
+              <span class="skill-percentage">75%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="75"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">Threat Detection</span>
+              <span class="skill-percentage">80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="80"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">API Development</span>
+              <span class="skill-percentage">88%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="88"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span class="skill-name">Incident Response</span>
+              <span class="skill-percentage">70%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="70"></div>
+            </div>
+          </div>
         </div>
+        <div class="skills-tools">
+          <div class="tool-category">
+            <h3><i class="fas fa-shield-alt"></i> Security Tools</h3>
+            <div class="tool-tags">
+              <span class="tool-tag">Wireshark</span>
+              <span class="tool-tag">Metasploit</span>
+              <span class="tool-tag">Nmap</span>
+              <span class="tool-tag">Burp Suite</span>
+              <span class="tool-tag">Sherlock</span>
+            </div>
+          </div>
+          <div class="tool-category">
+            <h3><i class="fas fa-layer-group"></i> Frameworks & Tools</h3>
+            <div class="tool-tags">
+              <span class="tool-tag">Django</span>
+              <span class="tool-tag">Vue</span>
+              <span class="tool-tag">REST API</span>
+              <span class="tool-tag">NIST</span>
+              <span class="tool-tag">OWASP</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Projects Section -->
     <section class="projects" id="projects">
-        <div class="section-header">
-            <h2>Featured <span class="gradient-text">Projects</span></h2>
-            <p>Real-world security implementations and development projects</p>
+      <div class="section-header">
+        <h2>Featured <span class="gradient-text">Projects</span></h2>
+        <p>Real-world security implementations and development projects</p>
+      </div>
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Projects will be dynamically reordered by JavaScript -->
+        <div
+          class="project-card featured"
+          data-category="development"
+          data-order-security="1"
+          data-order-developer="1"
+        >
+          <div class="project-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3>Socratic AI Learning Platform</h3>
+          <p>
+            Full-stack AI application that helps users summarize PDFs and
+            documents, generate audio summaries, and create interactive quizzes
+            for enhanced learning retention.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Vue</span>
+            <span class="tech-tag">AI/ML</span>
+            <span class="tech-tag">Full-Stack</span>
+            <span class="tech-tag">PDF Processing</span>
+          </div>
+          <a
+            href="https://socratic-frontend-ashy.vercel.app/"
+            target="_blank"
+            class="project-link"
+          >
+            View Live App <i class="fas fa-external-link-alt"></i>
+          </a>
         </div>
-        <div class="projects-grid" id="projectsGrid">
-            <!-- Projects will be dynamically reordered by JavaScript -->
-            <div class="project-card featured" data-category="development" data-order-security="1" data-order-developer="1">
-                <div class="project-icon">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <h3>Socratic AI Learning Platform</h3>
-                <p>Full-stack AI application that helps users summarize PDFs and documents, generate audio summaries, and create interactive quizzes for enhanced learning retention.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Vue</span>
-                    <span class="tech-tag">AI/ML</span>
-                    <span class="tech-tag">Full-Stack</span>
-                    <span class="tech-tag">PDF Processing</span>
-                </div>
-                <a href="https://socratic-frontend-ashy.vercel.app/" target="_blank" class="project-link">
-                    View Live App <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
 
-            <div class="project-card" data-category="development" data-order-security="7" data-order-developer="2">
-                <div class="project-icon">
-                    <i class="fas fa-utensils"></i>
-                </div>
-                <h3>TheLifeStation Digital Menu</h3>
-                <p>Interactive digital menu platform for a Lekki-based restaurant, providing seamless browsing experience for customers to explore menu items, prices, and categories.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Django</span>
-                    <span class="tech-tag">Full-Stack</span>
-                    <span class="tech-tag">UI/UX</span>
-                </div>
-                <a href="https://thelifestation.pythonanywhere.com/menu/thelifestation-restaurant/" target="_blank" class="project-link">
-                    View Live Menu <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
-
-
-            <div class="project-card featured" data-category="security" data-order-security="2" data-order-developer="4">
-                <div class="project-icon">
-                    <i class="fas fa-network-wired"></i>
-                </div>
-                <h3>PCAP File Analyzer</h3>
-                <p>Advanced network traffic analysis tool that generates quick, comprehensive analysis on PCAP files for security auditing and threat detection.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Network Analysis</span>
-                    <span class="tech-tag">Security</span>
-                </div>
-                <a href="https://github.com/ayorex11/pcap-analyzer" target="_blank" class="project-link">
-                    View on GitHub <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
-            <div class="project-card" data-category="development" data-order-security="5" data-order-developer="3">
-                <div class="project-icon">
-                    <i class="fas fa-code"></i>
-                </div>
-                <h3>EkoPages API</h3>
-                <p>Secure, scalable API architecture for educational platform focused on SDGs with comprehensive security controls and authentication.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Django</span>
-                    <span class="tech-tag">REST API</span>
-                    <span class="tech-tag">Security</span>
-                </div>
-                <a href="https://ekopages.com/" target="_blank" class="project-link">
-                    View Project <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
-            <div class="project-card" data-category="security" data-order-security="3" data-order-developer="5">
-                <div class="project-icon">
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <h3>Email Threat Analysis</h3>
-                <p>Advanced email analysis system to detect phishing attempts and malicious content with automated threat intelligence integration.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">OSINT</span>
-                    <span class="tech-tag">Threat Intel</span>
-                </div>
-                <a href="https://github.com/ayorex11/email-analysis" target="_blank" class="project-link">
-                    View Project <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
-            <div class="project-card" data-category="development" data-order-security="6" data-order-developer="4">
-                <div class="project-icon">
-                    <i class="fas fa-cloud"></i>
-                </div>
-                <h3>Weather API</h3>
-                <p>Django REST framework implementation with proper authentication, rate limiting, and comprehensive API documentation.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Django</span>
-                    <span class="tech-tag">REST API</span>
-                    <span class="tech-tag">Documentation</span>
-                </div>
-                <a href="https://github.com/ayorex11/weatherAPP" target="_blank" class="project-link">
-                    View Project <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
-            <div class="project-card" data-category="security" data-order-security="4" data-order-developer="6">
-                <div class="project-icon">
-                    <i class="fas fa-shield-virus"></i>
-                </div>
-                <h3>Malware Scanner</h3>
-                <p>Automated vulnerability assessment tool that scans systems for malware based on file hash analysis and behavioral patterns.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Hash Analysis</span>
-                    <span class="tech-tag">Security</span>
-                </div>
-                <a href="https://github.com/ayorex11/malware-scanner" target="_blank" class="project-link">
-                    View Project <i class="fas fa-external-link-alt"></i>
-                </a>
-            </div>
+        <div
+          class="project-card"
+          data-category="development"
+          data-order-security="7"
+          data-order-developer="2"
+        >
+          <div class="project-icon">
+            <i class="fas fa-utensils"></i>
+          </div>
+          <h3>TheLifeStation Digital Menu</h3>
+          <p>
+            Interactive digital menu platform for a Lekki-based restaurant,
+            providing seamless browsing experience for customers to explore menu
+            items, prices, and categories.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Django</span>
+            <span class="tech-tag">Full-Stack</span>
+            <span class="tech-tag">UI/UX</span>
+          </div>
+          <a
+            href="https://thelifestation.pythonanywhere.com/menu/thelifestation-restaurant/"
+            target="_blank"
+            class="project-link"
+          >
+            View Live Menu <i class="fas fa-external-link-alt"></i>
+          </a>
         </div>
+
+        <div
+          class="project-card featured"
+          data-category="security"
+          data-order-security="2"
+          data-order-developer="4"
+        >
+          <div class="project-icon">
+            <i class="fas fa-network-wired"></i>
+          </div>
+          <h3>PCAP File Analyzer</h3>
+          <p>
+            Advanced network traffic analysis tool that generates quick,
+            comprehensive analysis on PCAP files for security auditing and
+            threat detection.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Network Analysis</span>
+            <span class="tech-tag">Security</span>
+          </div>
+          <a
+            href="https://github.com/ayorex11/pcap-analyzer"
+            target="_blank"
+            class="project-link"
+          >
+            View on GitHub <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+        <div
+          class="project-card"
+          data-category="development"
+          data-order-security="5"
+          data-order-developer="3"
+        >
+          <div class="project-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3>EkoPages API</h3>
+          <p>
+            Secure, scalable API architecture for educational platform focused
+            on SDGs with comprehensive security controls and authentication.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Django</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Security</span>
+          </div>
+          <a href="https://ekopages.com/" target="_blank" class="project-link">
+            View Project <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+        <div
+          class="project-card"
+          data-category="security"
+          data-order-security="3"
+          data-order-developer="5"
+        >
+          <div class="project-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <h3>Email Threat Analysis</h3>
+          <p>
+            Advanced email analysis system to detect phishing attempts and
+            malicious content with automated threat intelligence integration.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">OSINT</span>
+            <span class="tech-tag">Threat Intel</span>
+          </div>
+          <a
+            href="https://github.com/ayorex11/email-analysis"
+            target="_blank"
+            class="project-link"
+          >
+            View Project <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+        <div
+          class="project-card"
+          data-category="development"
+          data-order-security="6"
+          data-order-developer="4"
+        >
+          <div class="project-icon">
+            <i class="fas fa-cloud"></i>
+          </div>
+          <h3>Weather API</h3>
+          <p>
+            Django REST framework implementation with proper authentication,
+            rate limiting, and comprehensive API documentation.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Django</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Documentation</span>
+          </div>
+          <a
+            href="https://github.com/ayorex11/weatherAPP"
+            target="_blank"
+            class="project-link"
+          >
+            View Project <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+        <div
+          class="project-card"
+          data-category="security"
+          data-order-security="4"
+          data-order-developer="6"
+        >
+          <div class="project-icon">
+            <i class="fas fa-shield-virus"></i>
+          </div>
+          <h3>Malware Scanner</h3>
+          <p>
+            Automated vulnerability assessment tool that scans systems for
+            malware based on file hash analysis and behavioral patterns.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Hash Analysis</span>
+            <span class="tech-tag">Security</span>
+          </div>
+          <a
+            href="https://github.com/ayorex11/malware-scanner"
+            target="_blank"
+            class="project-link"
+          >
+            View Project <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
-        <div class="section-header">
-            <h2>Get In <span class="gradient-text">Touch</span></h2>
-            <p>I'm always interested in discussing cybersecurity projects, research collaborations, or potential opportunities</p>
-        </div>
-        <div class="contact-content">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h4>Name</h4>
-                        <p>Ayomide Adewale</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h4>Location</h4>
-                        <p>Lagos, Nigeria</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h4>Email</h4>
-                        <p>adewalemaxwell11@gmail.com</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="contact-details">
-                        <h4>Phone</h4>
-                        <p>+234 913 657 0199</p>
-                    </div>
-                </div>
+      <div class="section-header">
+        <h2>Get In <span class="gradient-text">Touch</span></h2>
+        <p>
+          I'm always interested in discussing cybersecurity projects, research
+          collaborations, or potential opportunities
+        </p>
+      </div>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-user"></i>
             </div>
-            <div class="contact-form">
-                <form id="contactForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea rows="6" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
+            <div class="contact-details">
+              <h4>Name</h4>
+              <p>Ayomide Adewale</p>
             </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Location</h4>
+              <p>Lagos, Nigeria</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Email</h4>
+              <p>adewalemaxwell11@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Phone</h4>
+              <p>+234 913 657 0199</p>
+            </div>
+          </div>
         </div>
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <input type="text" placeholder="Your Name" required />
+              </div>
+              <div class="form-group">
+                <input type="email" placeholder="Your Email" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" placeholder="Subject" required />
+            </div>
+            <div class="form-group">
+              <textarea rows="6" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <p>Created by <a href="https://www.linkedin.com/in/ayomide-adewale-b0899922b/" target="_blank">Ayomide Adewale</a> | <i class="far fa-copyright"></i> 2026 All rights reserved.</p>
-        </div>
+      <div class="footer-content">
+        <p>
+          Created by
+          <a
+            href="https://www.linkedin.com/in/ayomide-adewale-b0899922b/"
+            target="_blank"
+            >Ayomide Adewale</a
+          >
+          | <i class="far fa-copyright"></i> 2026 All rights reserved.
+        </p>
+      </div>
     </footer>
+
+    <!-- Game Modal -->
+    <div class="game-modal" id="gameModal">
+        <div class="game-container">
+            <div class="game-header">
+                <h2><i class="fas fa-gamepad"></i> Tic-Tac-Toe Challenge</h2>
+                <button class="game-close" id="gameClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="game-info">
+                <div class="player-info">
+                    <span class="player-label">You</span>
+                    <span class="player-symbol" id="playerSymbol">X</span>
+                </div>
+                <div class="game-status" id="gameStatus">Your Turn</div>
+                <div class="player-info">
+                    <span class="player-label">AI Bot</span>
+                    <span class="player-symbol ai-symbol">O</span>
+                </div>
+            </div>
+            <div class="game-board" id="gameBoard">
+                <div class="game-cell" data-index="0"></div>
+                <div class="game-cell" data-index="1"></div>
+                <div class="game-cell" data-index="2"></div>
+                <div class="game-cell" data-index="3"></div>
+                <div class="game-cell" data-index="4"></div>
+                <div class="game-cell" data-index="5"></div>
+                <div class="game-cell" data-index="6"></div>
+                <div class="game-cell" data-index="7"></div>
+                <div class="game-cell" data-index="8"></div>
+            </div>
+            <div class="game-controls">
+                <button class="btn btn-primary" id="resetGame">
+                    <i class="fas fa-redo"></i> New Game
+                </button>
+                <div class="game-score">
+                    <div class="score-item">
+                        <span class="score-label">Wins</span>
+                        <span class="score-value" id="playerWins">0</span>
+                    </div>
+                    <div class="score-item">
+                        <span class="score-label">Draws</span>
+                        <span class="score-value" id="draws">0</span>
+                    </div>
+                    <div class="score-item">
+                        <span class="score-label">Losses</span>
+                        <span class="score-value" id="aiWins">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Snake Game Modal -->
+    <div class="snake-modal" id="snakeModal">
+        <div class="snake-container">
+            <div class="game-header">
+                <h2><i class="fas fa-bug"></i> Snake Challenge</h2>
+                <button class="game-close" id="snakeClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="snake-stats">
+                <div class="stat-box">
+                    <span class="stat-label">Score</span>
+                    <span class="stat-value" id="snakeScore">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">High Score</span>
+                    <span class="stat-value" id="snakeHighScore">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Speed</span>
+                    <span class="stat-value" id="snakeSpeed">1x</span>
+                </div>
+            </div>
+
+            <div class="snake-game-area">
+                <canvas id="snakeCanvas" width="400" height="400"></canvas>
+                <div class="snake-overlay" id="snakeOverlay">
+                    <div class="overlay-content">
+                        <h3 id="overlayTitle">Ready to Play?</h3>
+                        <p id="overlayMessage">Use arrow keys or WASD to control the snake</p>
+                        <button class="btn btn-primary" id="snakeStart">
+                            <i class="fas fa-play"></i> Start Game
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="snake-controls">
+                <div class="control-group">
+                    <label for="difficulty">Difficulty:</label>
+                    <select id="difficulty" class="control-select">
+                        <option value="easy">Easy</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="hard">Hard</option>
+                        <option value="extreme">Extreme</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <button class="control-btn" id="aiToggle">
+                        <i class="fas fa-robot"></i> AI Autopilot: OFF
+                    </button>
+                </div>
+                <div class="control-group">
+                    <button class="control-btn" id="pauseGame">
+                        <i class="fas fa-pause"></i> Pause
+                    </button>
+                </div>
+            </div>
+
+            <div class="snake-instructions">
+                <div class="instruction-item">
+                    <i class="fas fa-keyboard"></i>
+                    <span>Arrow Keys / WASD to move</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-robot"></i>
+                    <span>Toggle AI to watch autopilot</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-trophy"></i>
+                    <span>Eat food to grow & score</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Game Menu -->
+    <div class="game-menu" id="gameMenu">
+        <button class="game-menu-item" id="openTicTacToe">
+            <i class="fas fa-th"></i>
+            <span>Tic-Tac-Toe</span>
+        </button>
+        <button class="game-menu-item" id="openSnake">
+            <i class="fas fa-bug"></i>
+            <span>Snake</span>
+        </button>
+    </div>
+    
+    <button class="game-button" id="gameButton" title="Play Games">
+        <i class="fas fa-gamepad"></i>
+    </button>
 
     <!-- Scroll to Top Button -->
     <button class="scroll-top" id="scrollTop">
-        <i class="fas fa-arrow-up"></i>
+      <i class="fas fa-arrow-up"></i>
     </button>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
