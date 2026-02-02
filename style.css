@@ -2303,3 +2303,556 @@ footer {
     font-size: 13px;
   }
 }
+
+
+input, 
+textarea, 
+select,
+button {
+  font-size: 16px !important; /* Prevents iOS zoom */
+}
+
+
+html {
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none; /* Prevent bounce effect */
+}
+
+
+* {
+  -webkit-tap-highlight-color: rgba(16, 185, 129, 0.2);
+  -webkit-touch-callout: none;
+}
+
+button,
+a,
+.btn,
+.game-cell,
+.service-card,
+.project-card {
+  -webkit-tap-highlight-color: rgba(16, 185, 129, 0.3);
+}
+
+
+.btn,
+.toggle-btn,
+.game-menu-item,
+.control-btn,
+.mobile-toggle,
+.game-close,
+.scroll-top,
+.social-links a {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+
+#snakeCanvas,
+.game-board,
+.snake-game-area {
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+
+@media (max-width: 768px) {
+  /* Snake Canvas - Better mobile sizing */
+  #snakeCanvas {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100%;
+    aspect-ratio: 1;
+  }
+  
+  /* Game modals - More space efficient */
+  .game-modal,
+  .snake-modal {
+    padding: 10px;
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+  
+  .game-container,
+  .snake-container {
+    max-height: 90vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Larger game cells for easier tapping */
+  .game-cell {
+    min-height: 80px;
+    font-size: 40px;
+  }
+  
+  /* Better game button positioning */
+  .game-button {
+    bottom: 80px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+  }
+  
+  .game-menu {
+    bottom: 150px;
+    right: 20px;
+  }
+  
+  .game-menu-item {
+    padding: 14px 18px;
+    font-size: 14px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  /* Adjust hero buttons for small screens */
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  /* Smaller game cells on very small screens */
+  .game-cell {
+    min-height: 70px;
+    font-size: 36px;
+  }
+  
+  /* Compact game stats */
+  .snake-stats {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .stat-box {
+    padding: 10px;
+  }
+  
+  .stat-value {
+    font-size: 20px;
+  }
+  
+  /* Stack game controls */
+  .snake-controls {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .control-btn {
+    width: 100%;
+  }
+  
+  /* Stack instruction items */
+  .snake-instructions {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .instruction-item {
+    padding: 10px;
+  }
+  
+  /* Smaller mode toggle */
+  .mode-toggle {
+    top: 75px;
+    right: 15px;
+  }
+  
+  .toggle-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  
+  .toggle-btn i {
+    font-size: 14px;
+  }
+}
+
+
+@media (max-width: 900px) and (orientation: landscape) {
+  .hero {
+    min-height: 100vh;
+    padding-top: 70px;
+  }
+  
+  .game-modal,
+  .snake-modal {
+    align-items: center;
+  }
+  
+  .game-container,
+  .snake-container {
+    max-height: 85vh;
+  }
+}
+
+
+@media (hover: none) and (pointer: coarse) {
+  /* Disable transform hover effects that can cause issues */
+  .service-card:hover,
+  .project-card:hover,
+  .skill-item:hover,
+  .tool-category:hover,
+  .contact-item:hover {
+    transform: none;
+  }
+  
+  /* Keep color/border hover effects */
+  .service-card:active,
+  .project-card:active {
+    border-color: var(--primary);
+    box-shadow: 0 10px 30px var(--glow-color);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .contact-form {
+    padding: 24px 20px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 14px;
+    font-size: 16px; /* Prevent zoom */
+    border-radius: 10px;
+  }
+  
+  .form-group textarea {
+    min-height: 100px;
+  }
+  
+  /* Stack form row on mobile */
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: clamp(32px, 10vw, 60px);
+    line-height: 1.1;
+  }
+  
+  .hero p {
+    font-size: clamp(14px, 4vw, 18px);
+    line-height: 1.6;
+  }
+  
+  .section-header h2 {
+    font-size: clamp(28px, 7vw, 40px);
+  }
+  
+  .section-header p {
+    font-size: 16px;
+  }
+  
+  .about-text h2 {
+    font-size: clamp(28px, 7vw, 36px);
+  }
+  
+  .about-text p {
+    font-size: 15px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0 20px;
+    height: 65px;
+  }
+  
+  .logo {
+    font-size: 20px;
+  }
+  
+  .logo i {
+    font-size: 24px;
+  }
+  
+  .nav-menu {
+    top: 65px;
+    height: calc(100vh - 65px);
+    padding: 40px 0;
+  }
+  
+  .nav-menu a {
+    font-size: 18px;
+    padding: 12px 0;
+  }
+  
+  .mobile-toggle {
+    font-size: 22px;
+    padding: 8px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .stats-badge {
+    bottom: -15px;
+    right: -15px;
+    padding: 16px;
+  }
+  
+  .stat-number {
+    font-size: 24px;
+  }
+  
+  .stat-label {
+    font-size: 12px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .social-links {
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .social-links a {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .particle-canvas {
+    display: none;
+  }
+}
+
+
+@media (max-width: 768px) {
+  body.security-mode {
+    background: var(--bg-dark);
+  }
+  
+  body.developer-mode {
+    background: var(--bg-dark-developer);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .scroll-indicator {
+    bottom: 30px;
+  }
+  
+  .scroll-indicator i {
+    font-size: 28px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .project-card {
+    padding: 24px;
+  }
+  
+  .project-icon {
+    font-size: 32px;
+  }
+  
+  .project-card h3 {
+    font-size: 20px;
+  }
+  
+  .project-card p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  .tech-tag {
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .service-card {
+    padding: 28px 24px;
+  }
+  
+  .service-icon {
+    font-size: 40px;
+  }
+  
+  .service-card h3 {
+    font-size: 20px;
+  }
+  
+  .service-card p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+
+.swipe-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(16, 185, 129, 0.9);
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: swipeFade 0.4s ease-out forwards;
+  z-index: 100;
+  font-size: 24px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.6);
+}
+
+body.developer-mode .swipe-indicator {
+  background: rgba(59, 130, 246, 0.9);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.6);
+}
+
+@keyframes swipeFade {
+  0% { 
+    opacity: 1; 
+    transform: translate(-50%, -50%) scale(0.8); 
+  }
+  100% { 
+    opacity: 0; 
+    transform: translate(-50%, -50%) scale(1.3); 
+  }
+}
+
+
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block;
+  }
+  
+  .desktop-only {
+    display: none;
+  }
+}
+
+.mobile-only-inline {
+  display: none;
+}
+
+.desktop-only-inline {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .mobile-only-inline {
+    display: inline;
+  }
+  
+  .desktop-only-inline {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Reduce box shadows on mobile for better performance */
+  .service-card,
+  .project-card,
+  .skill-item,
+  .contact-item {
+    box-shadow: none;
+    border: 1px solid var(--border-color);
+  }
+  
+  .service-card:active,
+  .project-card:active {
+    box-shadow: 0 4px 15px var(--glow-color);
+  }
+  
+  /* Simplify gradients on mobile */
+  .gradient-text {
+    background-size: 100% 100%;
+    animation: none;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .welcome-modal {
+    backdrop-filter: blur(5px); /* Reduce blur for performance */
+  }
+  
+  .terminal-container {
+    backdrop-filter: blur(10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .btn:active,
+  .game-menu-item:active,
+  .control-btn:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+  
+  .game-cell:active:not(.taken) {
+    transform: scale(0.95);
+  }
+}
+
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+  
+  nav {
+    padding-left: max(20px, env(safe-area-inset-left));
+    padding-right: max(20px, env(safe-area-inset-right));
+  }
+  
+  .game-button,
+  .scroll-top {
+    right: max(20px, env(safe-area-inset-right));
+  }
+  
+  .mode-toggle {
+    right: max(20px, env(safe-area-inset-right));
+  }
+}
+

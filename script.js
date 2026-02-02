@@ -37,12 +37,16 @@ class ParticleSystem {
 
     this.ctx = this.canvas.getContext("2d");
     this.particles = [];
-    this.particleCount = 50;
+    this.particleCount = this.isMobile() ? 25 : 50; // Reduce particles on mobile
     this.mouse = { x: null, y: null, radius: 150 };
 
     this.init();
     this.animate();
     this.setupEventListeners();
+  }
+
+  isMobile() {
+    return window.innerWidth <= 768;
   }
 
   init() {
@@ -53,6 +57,12 @@ class ParticleSystem {
   resize() {
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
+    // Adjust particle count on resize
+    const newCount = this.isMobile() ? 25 : 50;
+    if (newCount !== this.particleCount) {
+      this.particleCount = newCount;
+      this.createParticles();
+    }
   }
 
   createParticles() {
@@ -77,6 +87,19 @@ class ParticleSystem {
     });
 
     window.addEventListener("mouseleave", () => {
+      this.mouse.x = null;
+      this.mouse.y = null;
+    });
+
+    // Touch support for mobile
+    window.addEventListener("touchmove", (e) => {
+      if (e.touches.length > 0) {
+        this.mouse.x = e.touches[0].clientX;
+        this.mouse.y = e.touches[0].clientY;
+      }
+    });
+
+    window.addEventListener("touchend", () => {
       this.mouse.x = null;
       this.mouse.y = null;
     });
@@ -246,7 +269,7 @@ function reorderProjects(mode) {
 
   projects.sort((a, b) => {
     const orderA = parseInt(a.getAttribute(`data-order-${mode}`));
-    const orderB = parseInt(b.getAttribute(`data-order-${mode}`));
+    const orderB = parseInt(a.getAttribute(`data-order-${mode}`));
     return orderA - orderB;
   });
 
@@ -490,7 +513,6 @@ class TicTacToeGame {
   }
   
   attachEventListeners() {
-    // Don't attach to game button here - that's handled by game menu
     this.gameClose.addEventListener('click', () => this.closeGame());
     this.resetBtn.addEventListener('click', () => this.resetGame());
     
@@ -703,7 +725,7 @@ class TicTacToeGame {
 }
 
 // ========================================
-// GAME MENU - FIXED
+// GAME MENU
 // ========================================
 
 function initGameMenu() {
@@ -720,20 +742,17 @@ function initGameMenu() {
   let menuOpen = false;
   
   gameButton.addEventListener('click', (e) => {
-    e.stopPropagation(); // Prevent event bubbling
+    e.stopPropagation();
     menuOpen = !menuOpen;
     if (menuOpen) {
       gameMenu.classList.add('active');
-      console.log('Game menu opened');
     } else {
       gameMenu.classList.remove('active');
-      console.log('Game menu closed');
     }
   });
   
   openTicTacToe.addEventListener('click', (e) => {
     e.stopPropagation();
-    console.log('Opening Tic-Tac-Toe');
     gameMenu.classList.remove('active');
     menuOpen = false;
     document.getElementById('gameModal').classList.add('active');
@@ -741,7 +760,6 @@ function initGameMenu() {
   
   openSnake.addEventListener('click', (e) => {
     e.stopPropagation();
-    console.log('Opening Snake');
     gameMenu.classList.remove('active');
     menuOpen = false;
     document.getElementById('snakeModal').classList.add('active');
@@ -757,7 +775,7 @@ function initGameMenu() {
 }
 
 // ========================================
-// SNAKE GAME
+// SNAKE GAME WITH MOBILE TOUCH CONTROLS
 // ========================================
 
 class SnakeGame {
@@ -787,6 +805,13 @@ class SnakeGame {
     this.currentDifficulty = 'medium';
     this.gameSpeed = this.difficulties[this.currentDifficulty];
     
+    // Touch controls
+    this.touchStartX = 0;
+    this.touchStartY = 0;
+    this.touchEndX = 0;
+    this.touchEndY = 0;
+    this.minSwipeDistance = 30; // Minimum distance for swipe detection
+    
     this.init();
   }
   
@@ -808,6 +833,7 @@ class SnakeGame {
     this.loadHighScore();
     this.attachEventListeners();
     this.updateSpeedDisplay();
+    this.setupTouchControls(); // Add touch controls
   }
   
   attachEventListeners() {
@@ -825,6 +851,7 @@ class SnakeGame {
       }
     });
     
+    // Keyboard controls
     document.addEventListener('keydown', (e) => {
       if (!this.snakeModal.classList.contains('active')) return;
       
@@ -861,6 +888,66 @@ class SnakeGame {
         this.closeGame();
       }
     });
+  }
+  
+  setupTouchControls() {
+    // Touch controls on canvas
+    this.canvas.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      const touch = e.touches[0];
+      this.touchStartX = touch.clientX;
+      this.touchStartY = touch.clientY;
+    }, { passive: false });
+    
+    this.canvas.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+    }, { passive: false });
+    
+    this.canvas.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      if (!this.gameRunning || this.aiMode || this.gamePaused) return;
+      
+      const touch = e.changedTouches[0];
+      this.touchEndX = touch.clientX;
+      this.touchEndY = touch.clientY;
+      
+      this.handleSwipe();
+    }, { passive: false });
+  }
+  
+  handleSwipe() {
+    const deltaX = this.touchEndX - this.touchStartX;
+    const deltaY = this.touchEndY - this.touchStartY;
+    
+    // Check if swipe is long enough
+    if (Math.abs(deltaX) < this.minSwipeDistance && Math.abs(deltaY) < this.minSwipeDistance) {
+      return;
+    }
+    
+    // Determine swipe direction
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      // Horizontal swipe
+      if (deltaX > 0 && this.dx === 0) {
+        // Swipe right
+        this.dx = 1;
+        this.dy = 0;
+      } else if (deltaX < 0 && this.dx === 0) {
+        // Swipe left
+        this.dx = -1;
+        this.dy = 0;
+      }
+    } else {
+      // Vertical swipe
+      if (deltaY > 0 && this.dy === 0) {
+        // Swipe down
+        this.dx = 0;
+        this.dy = 1;
+      } else if (deltaY < 0 && this.dy === 0) {
+        // Swipe up
+        this.dx = 0;
+        this.dy = -1;
+      }
+    }
   }
   
   closeGame() {
