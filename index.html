@@ -2,7 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#10b981">
+
+    <!-- PWA Support -->
+    <link rel="apple-touch-icon" href="images/icon-192.png">
+    <link rel="manifest" href="manifest.json">
     <title>Ayomide Adewale - Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -677,79 +685,86 @@
 
     <!-- Snake Game Modal -->
     <div class="snake-modal" id="snakeModal">
-        <div class="snake-container">
-            <div class="game-header">
-                <h2><i class="fas fa-bug"></i> Snake Challenge</h2>
-                <button class="game-close" id="snakeClose">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            
-            <div class="snake-stats">
-                <div class="stat-box">
-                    <span class="stat-label">Score</span>
-                    <span class="stat-value" id="snakeScore">0</span>
-                </div>
-                <div class="stat-box">
-                    <span class="stat-label">High Score</span>
-                    <span class="stat-value" id="snakeHighScore">0</span>
-                </div>
-                <div class="stat-box">
-                    <span class="stat-label">Speed</span>
-                    <span class="stat-value" id="snakeSpeed">1x</span>
-                </div>
-            </div>
-
-            <div class="snake-game-area">
-                <canvas id="snakeCanvas" width="400" height="400"></canvas>
-                <div class="snake-overlay" id="snakeOverlay">
-                    <div class="overlay-content">
-                        <h3 id="overlayTitle">Ready to Play?</h3>
-                        <p id="overlayMessage">Use arrow keys or WASD to control the snake</p>
-                        <button class="btn btn-primary" id="snakeStart">
-                            <i class="fas fa-play"></i> Start Game
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="snake-controls">
-                <div class="control-group">
-                    <label for="difficulty">Difficulty:</label>
-                    <select id="difficulty" class="control-select">
-                        <option value="easy">Easy</option>
-                        <option value="medium" selected>Medium</option>
-                        <option value="hard">Hard</option>
-                        <option value="extreme">Extreme</option>
-                    </select>
-                </div>
-                <div class="control-group">
-                    <button class="control-btn" id="aiToggle">
-                        <i class="fas fa-robot"></i> AI Autopilot: OFF
-                    </button>
-                </div>
-                <div class="control-group">
-                    <button class="control-btn" id="pauseGame">
-                        <i class="fas fa-pause"></i> Pause
-                    </button>
-                </div>
-            </div>
-
-            <div class="snake-instructions">
-                <div class="instruction-item">
-                    <i class="fas fa-keyboard"></i>
-                    <span>Arrow Keys / WASD to move</span>
-                </div>
-                <div class="instruction-item">
-                    <i class="fas fa-robot"></i>
-                    <span>Toggle AI to watch autopilot</span>
-                </div>
-                <div class="instruction-item">
-                    <i class="fas fa-trophy"></i>
-                    <span>Eat food to grow & score</span>
-                </div>
-            </div>
+      <div class="snake-container">
+        <div class="game-header">
+          <h2><i class="fas fa-bug"></i> Snake Challenge</h2>
+          <button class="game-close" id="snakeClose">
+            <i class="fas fa-times"></i>
+          </button>
         </div>
+        
+        <div class="snake-stats">
+          <div class="stat-box">
+            <span class="stat-label">Score</span>
+            <span class="stat-value" id="snakeScore">0</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">High Score</span>
+            <span class="stat-value" id="snakeHighScore">0</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">Speed</span>
+            <span class="stat-value" id="snakeSpeed">1x</span>
+          </div>
+        </div>
+
+        <div class="snake-game-area">
+          <canvas id="snakeCanvas" width="400" height="400"></canvas>
+          <div class="snake-overlay" id="snakeOverlay">
+            <div class="overlay-content">
+              <h3 id="overlayTitle">Ready to Play?</h3>
+              <p id="overlayMessage">
+                <span class="desktop-only">Use arrow keys or WASD to control the snake</span>
+                <span class="mobile-only">👆 Swipe in any direction to control the snake</span>
+              </p>
+              <button class="btn btn-primary" id="snakeStart">
+                <i class="fas fa-play"></i> Start Game
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="snake-controls">
+          <div class="control-group">
+            <label for="difficulty">Difficulty:</label>
+            <select id="difficulty" class="control-select">
+              <option value="easy">Easy</option>
+              <option value="medium" selected>Medium</option>
+              <option value="hard">Hard</option>
+              <option value="extreme">Extreme</option>
+            </select>
+          </div>
+          <div class="control-group">
+            <button class="control-btn" id="aiToggle">
+              <i class="fas fa-robot"></i> 
+              <span class="desktop-only-inline">AI Autopilot: OFF</span>
+              <span class="mobile-only-inline">AI: OFF</span>
+            </button>
+          </div>
+          <div class="control-group">
+            <button class="control-btn" id="pauseGame">
+              <i class="fas fa-pause"></i> Pause
+            </button>
+          </div>
+        </div>
+
+        <div class="snake-instructions">
+          <div class="instruction-item">
+            <i class="fas fa-keyboard desktop-only"></i>
+            <i class="fas fa-hand-pointer mobile-only"></i>
+            <span class="desktop-only">Arrow Keys / WASD</span>
+            <span class="mobile-only">Swipe to move</span>
+          </div>
+          <div class="instruction-item">
+            <i class="fas fa-robot"></i>
+            <span>Watch AI autopilot</span>
+          </div>
+          <div class="instruction-item">
+            <i class="fas fa-trophy"></i>
+            <span>Eat food to grow</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Floating Game Menu -->
