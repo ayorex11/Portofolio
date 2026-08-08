@@ -1,36 +1,38 @@
 <template>
-  <section id="skills" class="wrap sticky-section">
-    <div class="sticky-col">
-      <div class="tag">// tech stack</div>
-      <h2 class="h2">Where dev meets <span class="grad-text">defense</span></h2>
-      <p class="desc">A unique combination of development skills and security knowledge.</p>
-    </div>
-    <div class="stack-col" ref="stackRef">
-      <div class="stack-card rings-card">
-        <div class="ring-item" v-for="r in rings" :key="r.label">
-          <svg class="ring-svg" viewBox="0 0 120 120">
-            <circle class="ring-bg" cx="60" cy="60" r="50" />
-            <circle
-              class="ring-fill"
-              cx="60"
-              cy="60"
-              r="50"
-              :style="{ strokeDashoffset: ringOffset(r.progress) }"
-            />
-          </svg>
-          <div class="ring-center">
-            <span class="ring-pct">{{ r.progress }}%</span>
-            <span class="ring-name">{{ r.label }}</span>
-          </div>
+  <section id="skills" class="wrap skills-section">
+    <div class="tag">// tech stack</div>
+    <h2 class="h2">Where dev meets <span class="grad-text">defense</span></h2>
+    <p class="desc">Sys_scan_complete // core_competencies_mapped</p>
+
+    <div class="bento" ref="bentoRef">
+      <div class="bento-box box-wide">
+        <div class="box-head">
+          <span class="box-index cyan-dot">// 01 DEFENSIVE_ENGINEERING</span>
+        </div>
+        <h4>Defensive Engineering</h4>
+        <div class="chip-row">
+          <span class="pill chip" v-for="c in defensiveEngineering" :key="c">{{ c }}</span>
         </div>
       </div>
 
-      <div class="stack-card" v-for="group in toolGroups" :key="group.title">
-        <i :class="group.icon"></i>
-        <h4>{{ group.title }}</h4>
-        <div class="tool-cloud">
-          <span class="pill" v-for="chip in group.chips" :key="chip">{{ chip }}</span>
+      <div class="bento-box">
+        <div class="box-head">
+          <span class="box-index">// 02 RISK_THREAT_MODELING</span>
         </div>
+        <h4>Risk &amp; Threat Modeling</h4>
+        <ul class="check-list">
+          <li v-for="c in riskThreatModeling" :key="c"><i class="fas fa-check"></i>{{ c }}</li>
+        </ul>
+      </div>
+
+      <div class="bento-box">
+        <div class="box-head">
+          <span class="box-index">// 03 DEPLOYMENT_OPS</span>
+        </div>
+        <h4>Deployment &amp; Ops</h4>
+        <ul class="check-list">
+          <li v-for="c in deploymentOps" :key="c"><i class="fas fa-chevron-right"></i>{{ c }}</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -39,38 +41,11 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from 'vue'
 
-const circumference = 2 * Math.PI * 50
+const defensiveEngineering = ['Django', 'Django REST Framework', 'PostgreSQL', 'Redis']
+const riskThreatModeling = ['FAIR Framework', 'Monte Carlo Simulation', 'OWASP Top 10', 'Quantitative Risk Analysis']
+const deploymentOps = ['Render', 'Supabase', 'CI/CD', 'Incident Response']
 
-function ringOffset(pct) {
-  return circumference - (pct / 100) * circumference
-}
-
-const rings = [
-  { label: 'Python & Django', progress: 90 },
-  { label: 'API dev', progress: 85 },
-  { label: 'Vue.js', progress: 80 },
-  { label: 'Security', progress: 75 },
-]
-
-const toolGroups = [
-  {
-    icon: 'fas fa-code',
-    title: 'Languages & frameworks',
-    chips: ['Python', 'Django', 'Django REST', 'Vue.js', 'JavaScript', 'HTML/CSS'],
-  },
-  {
-    icon: 'fas fa-tools',
-    title: 'Tools & platforms',
-    chips: ['Git & GitHub', 'REST APIs', 'OWASP', 'NIST', 'Wireshark', 'Burp Suite'],
-  },
-  {
-    icon: 'fas fa-brain',
-    title: 'Specialisations',
-    chips: ['AI/ML integration', 'PDF processing', 'Auth systems', 'Threat detection'],
-  },
-]
-
-const stackRef = ref(null)
+const bentoRef = ref(null)
 let observer
 
 onMounted(() => {
@@ -78,46 +53,43 @@ onMounted(() => {
     (entries) => {
       entries.forEach((entry) => entry.target.classList.toggle('active', entry.isIntersecting))
     },
-    { threshold: 0.4, rootMargin: '-15% 0px -15% 0px' }
+    { threshold: 0.3, rootMargin: '-10% 0px -10% 0px' }
   )
-  stackRef.value?.querySelectorAll('.stack-card').forEach((el) => observer.observe(el))
+  bentoRef.value?.querySelectorAll('.bento-box').forEach((el) => observer.observe(el))
 })
 
 onUnmounted(() => observer?.disconnect())
 </script>
 
 <style scoped>
-.sticky-section {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 50px;
+.skills-section {
   padding: 80px 24px;
-}
-.sticky-col {
-  position: sticky;
-  top: 100px;
-  align-self: start;
-  height: fit-content;
 }
 .h2 {
   font-family: var(--font-display);
   font-size: 32px;
   font-weight: 600;
-  margin: 0 0 16px;
-  max-width: 360px;
+  margin: 0 0 12px;
+  max-width: 420px;
 }
 .desc {
   color: var(--text-2);
-  font-size: 15px;
-  line-height: 1.7;
-  max-width: 340px;
+  font-size: 12px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  margin-bottom: 40px;
 }
-.stack-col {
-  display: flex;
-  flex-direction: column;
-  gap: 26px;
+
+.bento {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
 }
-.stack-card {
+.box-wide {
+  grid-row: 1 / span 2;
+}
+.bento-box {
   background: var(--glass);
   border: 1px solid var(--border-glass);
   border-radius: 16px;
@@ -126,89 +98,74 @@ onUnmounted(() => observer?.disconnect())
   transform: translateY(20px) scale(0.98);
   transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.stack-card.active {
+.bento-box.active {
   opacity: 1;
   transform: translateY(0) scale(1);
   border-color: var(--border-glass-strong);
 }
-.stack-card > i {
-  font-size: 20px;
+.box-head {
+  margin-bottom: 14px;
+}
+.box-index {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--text-2);
+}
+.box-index.cyan-dot {
   color: var(--cyan);
-  display: block;
-  margin-bottom: 12px;
 }
-.stack-card h4 {
+.box-index.cyan-dot::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  margin-right: 8px;
+  box-shadow: 0 0 6px var(--cyan);
+}
+.bento-box h4 {
   font-family: var(--font-display);
-  font-size: 18px;
-  margin: 0 0 14px;
+  font-size: 20px;
+  margin: 0 0 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-glass);
 }
-.tool-cloud {
+.chip-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
 }
-
-.rings-card {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-.ring-item {
-  position: relative;
-  width: 100%;
-  max-width: 130px;
-  margin: 0 auto;
-}
-.ring-svg {
-  width: 100%;
-  transform: rotate(-90deg);
-}
-.ring-bg,
-.ring-fill {
-  fill: none;
-  stroke-width: 8;
-}
-.ring-bg {
-  stroke: rgba(255, 255, 255, 0.08);
-}
-.ring-fill {
-  stroke: var(--cyan);
-  stroke-linecap: round;
-  stroke-dasharray: 314.159;
-  stroke-dashoffset: 314.159;
-  transition: stroke-dashoffset 1.4s ease;
-}
-.ring-center {
-  position: absolute;
-  inset: 0;
+.check-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
+  gap: 12px;
+}
+.check-list li {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-1);
 }
-.ring-pct {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 600;
-}
-.ring-name {
-  font-size: 10px;
-  color: var(--text-2);
-  max-width: 80px;
+.check-list li i {
+  color: var(--cyan);
+  font-size: 11px;
+  width: 12px;
+  flex-shrink: 0;
 }
 
 @media (max-width: 820px) {
-  .sticky-section {
+  .bento {
     grid-template-columns: 1fr;
   }
-  .sticky-col {
-    position: static;
-  }
-}
-@media (max-width: 480px) {
-  .rings-card {
-    grid-template-columns: 1fr 1fr;
+  .box-wide {
+    grid-row: auto;
   }
 }
 </style>

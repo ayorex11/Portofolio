@@ -21,7 +21,7 @@
         <p class="body-text">
           My journey started with a passion for solving real problems through code. Along the way
           I developed a deep understanding of security principles — now everything I build has
-          that layer baked in from the start. Graduating with First Class Honours in Cyber
+          that layer baked in from the start. Graduating with a BSc in Cyber
           Security from <strong>Caleb University</strong> in 2026, and currently building
           <strong>SocraSeek</strong>, my own AI EdTech platform serving 100+ active users.
         </p>

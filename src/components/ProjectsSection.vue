@@ -21,6 +21,52 @@
         </div>
         <h4>{{ p.title }}</h4>
         <p>{{ p.desc }}</p>
+
+        <!-- ERD diagram visual (HallPass) -->
+        <div v-if="p.visual === 'erd'" class="visual-box erd-box">
+          <svg viewBox="0 0 460 160" class="erd-svg">
+            <line x1="80" y1="80" x2="230" y2="80" class="erd-line" />
+            <line x1="80" y1="40" x2="230" y2="40" class="erd-line" />
+            <line x1="80" y1="120" x2="230" y2="120" class="erd-line" />
+            <line x1="290" y1="80" x2="380" y2="80" class="erd-line" />
+            <rect x="20" y="55" width="90" height="50" rx="6" class="erd-node" />
+            <text x="65" y="85" class="erd-label">STUDENT</text>
+            <rect x="200" y="55" width="90" height="50" rx="6" class="erd-node" />
+            <text x="245" y="85" class="erd-label">ROOM</text>
+            <rect x="360" y="55" width="90" height="50" rx="6" class="erd-node" />
+            <text x="405" y="85" class="erd-label">PAYMENT</text>
+            <text x="150" y="72" class="erd-rel">1:N</text>
+            <text x="330" y="72" class="erd-rel">1:N</text>
+          </svg>
+          <div class="api-row">
+            <span class="method-badge get">GET</span>
+            <span class="endpoint">/api/v1/allocations/</span>
+            <span class="api-status"></span>
+          </div>
+        </div>
+
+        <!-- Risk curve chart visual (ScenarioForge) -->
+        <div v-else-if="p.visual === 'chart'" class="visual-box chart-box">
+          <svg viewBox="0 0 460 160" class="chart-svg">
+            <line x1="40" y1="10" x2="40" y2="140" class="chart-axis" />
+            <line x1="40" y1="140" x2="450" y2="140" class="chart-axis" />
+            <path
+              d="M40,20 C120,25 160,60 220,95 C280,125 340,138 450,140"
+              class="chart-line"
+              fill="none"
+            />
+            <path
+              d="M40,20 C120,25 160,60 220,95 C280,125 340,138 450,140 L450,140 L40,140 Z"
+              class="chart-fill"
+            />
+          </svg>
+          <div class="chart-meta">
+            <span>risk_model: FAIR</span>
+            <span>simulations: 10,000</span>
+            <span>output: loss_distribution</span>
+          </div>
+        </div>
+
         <div class="tool-cloud">
           <span class="pill" v-for="chip in p.tech" :key="chip">{{ chip }}</span>
         </div>
@@ -53,6 +99,18 @@ const projects = [
     link: 'https://www.scenarioforge.xyz/',
     linkLabel: 'View live app',
     featured: true,
+    visual: 'chart',
+  },
+  {
+    icon: 'fas fa-bed',
+    badge: 'Buildathon',
+    title: 'HallPass',
+    desc: 'Full-stack hostel allocation system with Paystack payment integration and QR-coded receipts, built for a Smart Campus Buildathon.',
+    tech: ['Vue 3', 'Pinia', 'DRF', 'PostgreSQL', 'Paystack'],
+    link: 'https://github.com/ayorex11/hallpassfrontend',
+    linkLabel: 'View on GitHub',
+    featured: true,
+    visual: 'erd',
   },
   {
     icon: 'fas fa-network-wired',
@@ -209,6 +267,98 @@ onUnmounted(() => observer?.disconnect())
   display: inline-flex;
   align-items: center;
   gap: 6px;
+}
+
+.visual-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+.erd-svg,
+.chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.erd-node {
+  fill: rgba(0, 212, 255, 0.05);
+  stroke: var(--border-glass-strong);
+  stroke-width: 1;
+}
+.erd-label {
+  fill: var(--text-1);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+.erd-line {
+  stroke: rgba(0, 212, 255, 0.3);
+  stroke-width: 1;
+}
+.erd-rel {
+  fill: var(--text-2);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  text-anchor: middle;
+}
+.api-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-glass);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+.method-badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+}
+.method-badge.get {
+  background: rgba(61, 220, 132, 0.12);
+  color: #3ddc84;
+}
+.endpoint {
+  color: var(--text-2);
+}
+.api-status {
+  margin-left: auto;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3ddc84;
+  box-shadow: 0 0 6px #3ddc84;
+}
+
+.chart-axis {
+  stroke: var(--border-glass);
+  stroke-width: 1;
+}
+.chart-line {
+  stroke: var(--cyan);
+  stroke-width: 2;
+}
+.chart-fill {
+  fill: url(#none);
+  fill: rgba(0, 212, 255, 0.08);
+  stroke: none;
+}
+.chart-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-glass);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-2);
 }
 
 @media (max-width: 820px) {
