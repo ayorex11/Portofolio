@@ -14,6 +14,7 @@
   </main>
   <AppFooter />
   <GameLauncher />
+  <NowPlayingBar />
 </template>
 
 <script setup>
@@ -30,4 +31,5 @@ import ContactSection from './components/ContactSection.vue'
 import AppFooter from './components/AppFooter.vue'
 import GameLauncher from './components/GameLauncher.vue'
 import ArticlesSection from './components/ArticlesSection.vue'
+import NowPlayingBar from './components/NowPlayingBar.vue'
 </script>
