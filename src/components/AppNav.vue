@@ -26,6 +26,7 @@ const links = [
   { href: '#services', label: 'services' },
   { href: '#skills', label: 'skills' },
   { href: '#projects', label: 'projects' },
+  { href: '#writing', label: 'writing' },
   { href: '#contact', label: 'contact' },
 ]
 

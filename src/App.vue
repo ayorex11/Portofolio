@@ -7,6 +7,7 @@
     <ServicesSection />
     <SkillsSection />
     <ProjectsSection />
+    <ArticlesSection />
     <IncidentTimeline />
     <VerifiedProof />
     <ContactSection />
@@ -28,4 +29,5 @@ import VerifiedProof from './components/VerifiedProof.vue'
 import ContactSection from './components/ContactSection.vue'
 import AppFooter from './components/AppFooter.vue'
 import GameLauncher from './components/GameLauncher.vue'
+import ArticlesSection from './components/ArticlesSection.vue'
 </script>
